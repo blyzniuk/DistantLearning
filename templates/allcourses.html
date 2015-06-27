@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Всі курси{% endblock %}
+{% block content %}
+    {% for subject in subjects %}
+        <h2 class="container">Курси з напряму {{ subject.subject_title }}</h2>
+        <div class="row-1">
+          <div class="container">
+            <div class="row">
+              <ul class="thumbnails thumbnails-1">
+                {% for course in courses %}
+                    {% if course.course_subject_id == subject.id %}
+                        <li class="span3">
+                          <div class="thumbnail thumbnail-1">
+                            <h3>{{ course.course_title }}</h3>
+                            <img src="/{{ course.course_img }}" alt="">
+                            <section>
+                              <p>{{ course.course_description }}</p>
+                              <a href="/course/{{ course.id }}/" class="btn btn-1">Read More</a> </section>
+                          </div>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+    {% endfor %}
+{% endblock %}

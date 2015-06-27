@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}{{ subject_title }}{% endblock %}
+{% block content %}
+
+        <h2 class="container">Курси з напряму {{ subject_title }}</h2>
+        <div class="row-1">
+          <div class="container">
+            <div class="row">
+              <ul class="thumbnails thumbnails-1">
+                {% for course in courses %}
+                <li class="span3">
+                  <div class="thumbnail thumbnail-1">
+                    <h3>{{ course.course_title }}</h3>
+                    <img class="img-thumbnail" src="/{{ course.course_img }}" alt="">
+                    <section>
+                      <p>{{ course.course_description }}</p>
+                      <a href="/course/{{ course.id }}/" class="btn btn-1">Read More</a> </section>
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+
+{% endblock %}

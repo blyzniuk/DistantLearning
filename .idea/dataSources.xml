@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="3370538697">
+    <data-source source="LOCAL" name="PostgreSQL - distant_learning@localhost" uuid="b7fc8325-92cc-4025-96c2-810748e907a7">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/distant_learning</jdbc-url>
+      <libraries />
+    </data-source>
+  </component>
+</project>

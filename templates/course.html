@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ course.course_title }}{% endblock %}
+{% block content %}
+    <div class="container">
+        <h1>{{ course.course_title }}</h1>
+        <div class="row">
+            <div class="span8">
+                <div class="row-course center">
+                    <img src="/{{ course.course_img }}">
+                    <br/>
+                    <div>
+                        {{ course.course_text|safe|linebreaks }}
+                    </div>
+                </div>
+            </div>
+            <div class="span4">
+            <div class="row-course">
+                <h4><a href="/feedback/{{ course.id }}/">Відгуки:</a></h4>
+                {% for comment in comments %}
+                    <div class="row-comment-in">
+                        <p class="comment-preview"><i>Автор: </i><b class="comment-preview-name">{{ comment.comment_author }}</b></p>
+                        <p class="comment-preview-text">{{ comment.comment_text|linebreaksbr }}</p>
+                        <p class="comment-preview"><i>Дата публікації: {{ comment.comment_date }}</i></p>
+                        <p class="comment-preview"><i>Рейтинг: {{ comment.comment_rate }}</i></p>
+                    </div>
+                {% endfor %}
+            </div>
+            </div>
+        </div>
+        {% for theme in themes %}
+            <div class="row-fluid row-1">
+                    <h3 class="offset1 span4">{{ theme.theme_title }}</h3>
+                    {% if user_is_student %}
+                        <h3 class="offset1 span2"><a href="/lecture/{{ theme.id }}/"><input class="span12 btn-1" type="button"value="Матеріал до теми"></a></h3>
+                        <h3 class="offset1 span2"><a href="/test/{{ theme.id }}/"><input class="span12 btn-1" type="button" value="Тест по темі"></a></h3>
+                    {% else %}
+                        <h3 class="offset1 span2"><a href=""><input class="span12 btn-1" type="button"value="Матеріал до теми"></a></h3>
+                        <h3 class="offset1 span2"><a href=""><input class="span12 btn-1" type="button" value="Тест по темі"></a></h3>
+                    {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

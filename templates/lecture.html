@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Лекція на тему {{ theme_title }}{% endblock %}
+{% block content %}
+    <div class="container">
+        <h1>{{ theme_title }}</h1>
+        <div class="row-fluid">
+            <div class="span8" align="center">
+                <iframe width="560" height="315" src="{{ lecture.lecture_video }}" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="span4 row-3">
+                <h3>План лекції:</h3>
+                <h5>{{ lecture.lecture_plan|linebreaksbr }}</h5>
+                <a href="/{{ lecture.lecture_pdf_file }}">
+                    <button type="button" class="btn-1 span12">Завантажити лекцію PDF</button>
+                </a>
+            </div>
+        </div>
+        <div class="row row-lecture">
+            <p>{{ lecture.lecture_text|linebreaksbr }}</p>
+        </div>
+    </div>
+{% endblock %}
